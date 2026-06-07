@@ -1,35 +1,46 @@
 # Behzod Avtoustoz
 
-  O'zbekistonda haydovchilik imtihoniga professional tayyorgarlik platformasi.
+O'zbekistonda haydovchilik imtihoniga professional tayyorgarlik platformasi (monorepo).
 
-  ## Xususiyatlar
+## Tuzilma
 
-  - 🚗 Demo testlar (bepul)
-  - 📚 Real GAI savollari
-  - 📱 Responsive dizayn
-  - 🌐 3 tilda: O'zbek, Ўзбек, Русский
-  - 📊 Statistika va natijalar
-  - 💳 To'lov tizimi
+```
+behzod-avtoustoz/
+├── frontend/   # React.js + Tailwind CSS (mijoz qismi)
+└── backend/    # Node.js + Express + MongoDB (server qismi)
+```
 
-  ## Texnologiyalar
+## Texnologiyalar
 
-  - **Frontend:** React.js, Tailwind CSS
-  - **Backend:** Node.js, Express.js
-  - **Database:** MongoDB
-  - **Deploy:** GitHub Actions, Nginx
+| Qism | Texnologiya |
+|------|-------------|
+| Frontend | React 18, Redux Toolkit, Tailwind CSS, i18next, Socket.io-client |
+| Backend | Node.js, Express, MongoDB (Mongoose), Socket.io, JWT |
+| To'lov | Click, Payme |
+| SMS | Eskiz.uz |
 
-  ## Deploy
+## Tez ishga tushirish
 
-  ```bash
-  npm install
-  npm run build
+### 1. Backend
+```bash
+cd backend
+npm install
+cp .env.example .env      # va qiymatlarni to'ldiring
+npm run seed              # boshlang'ich ma'lumot (admin + namuna savollar)
+npm run dev               # http://localhost:5000
+```
 
-  Environment Variables
+### 2. Frontend
+```bash
+cd frontend
+npm install
+npm start                 # http://localhost:3000
+```
 
-  REACT_APP_API_URL=https://behzod-avtoustoz.uz/api
-  REACT_APP_SOCKET_URL=https://behzod-avtoustoz.uz
-  REACT_APP_UPLOAD_URL=/uploads
+## Hujjatlar
 
-  License
+- Backend API va sozlamalar: [`backend/README.md`](backend/README.md)
 
-  Private - Barcha huquqlar himoyalangan
+## Litsenziya
+
+Private — Barcha huquqlar himoyalangan.
