@@ -25,8 +25,9 @@ services:
         generateValue: true
       - key: JWT_REFRESH_SECRET
         generateValue: true
+      # Cross-domain (Vercel↔Render) cookie cheklovlariga qarshi uzunroq access token
       - key: JWT_EXPIRES_IN
-        value: 15m
+        value: 7d
       - key: JWT_REFRESH_EXPIRES_IN
         value: 30d
       # Cookie domeni bo'sh (frontend va backend turli domenlarda)
