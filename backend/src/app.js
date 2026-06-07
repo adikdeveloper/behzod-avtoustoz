@@ -21,13 +21,17 @@ app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(compression());
 
 // CORS — frontend bilan cookie almashish uchun credentials
-const allowedOrigins = env.CLIENT_URL.split(',').map((s) => s.trim());
+const allowedOrigins = env.CLIENT_URL.split(',').map((s) => s.trim()).filter(Boolean);
 app.use(
   cors({
     origin(origin, cb) {
-      // origin yo'q (Postman, server-server) yoki ruxsat etilganlar ro'yxatida
-      if (!origin || allowedOrigins.includes(origin)) return cb(null, true);
-      return cb(null, true); // dev qulayligi uchun ochiq; production'da qattiqlashtiring
+      // origin yo'q (Postman, server-server, health check) — ruxsat
+      if (!origin) return cb(null, true);
+      if (allowedOrigins.includes(origin)) return cb(null, true);
+      // Dev rejimda har qanday origin'ga ruxsat (qulaylik uchun)
+      if (!env.isProd) return cb(null, true);
+      // Production: faqat CLIENT_URL ro'yxatidagilar
+      return cb(new Error(`CORS: ruxsat etilmagan origin (${origin})`));
     },
     credentials: true,
   })
