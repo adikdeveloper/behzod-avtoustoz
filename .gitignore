@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Production build
+build/
+dist/
+
+# Environment files (maxfiy — GitHub'ga yuklanmaydi)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+frontend.log
+
+# Archives / build artefaktlari
+*.tar.gz
+*.zip
+
+# Generated reports
+translation_report.json
+
+# Locale backup/temp fayllar
+*.backup
+*.broken
+*_temp.json
+
+# Editor / OS / tools
+.vscode/
+.idea/
+.claude/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Testing
+/coverage
+
+# Misc
+.eslintcache
